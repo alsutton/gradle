@@ -29,8 +29,8 @@ import org.codehaus.plexus.PlexusContainerException;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.configuration.PlexusConfigurationException;
-import org.sonatype.aether.RepositorySystemSession;
-import org.sonatype.aether.util.DefaultRepositorySystemSession;
+import org.eclipse.aether.RepositorySystemSession;
+import org.eclipse.aether.DefaultRepositorySystemSession;
 import org.gradle.util.CollectionUtils;
 
 import java.io.File;

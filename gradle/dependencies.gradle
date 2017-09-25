@@ -27,7 +27,7 @@ versions.groovy = "2.4.12"
 
 versions.bouncycastle = "1.57"
 
-versions.maven = "3.0.4"
+versions.maven = "3.3.9"
 
 libraries.ant = dependencies.module('org.apache.ant:ant:1.9.6') {
     dependency 'org.apache.ant:ant-launcher:1.9.6@jar'
@@ -115,17 +115,19 @@ libraries += [
 libraries.maven3 = dependencies.module("org.apache.maven:maven-core:${versions.maven}") {
     dependency "org.apache.maven:maven-settings:${versions.maven}@jar"
     dependency "org.apache.maven:maven-settings-builder:${versions.maven}@jar"
+    dependency "org.apache.maven:maven-builder-support:${versions.maven}@jar"
 
     //plexus:
-    dependency "org.codehaus.plexus:plexus-utils:2.0.6@jar"
-    dependency "org.codehaus.plexus:plexus-interpolation:1.14@jar"
-    dependency "org.codehaus.plexus:plexus-component-annotations:1.5.5@jar"
-    dependency "org.codehaus.plexus:plexus-container-default:1.5.5@jar"
-    dependency "org.codehaus.plexus:plexus-classworlds:2.4@jar"
+    dependency "org.codehaus.plexus:plexus-utils:3.1.0@jar"
+    dependency "org.codehaus.plexus:plexus-interpolation:1.24@jar"
+    dependency "org.codehaus.plexus:plexus-component-annotations:1.7.1@jar"
+    //     dependency "org.codehaus.plexus:plexus-container-default:1.5.5@jar" <-- Has an annotation processor which is needed :9
+    dependency "org.codehaus.plexus:plexus-classworlds:2.5.2@jar"
 
-    //sonatype plexus
-    dependency "org.sonatype.plexus:plexus-cipher:1.7@jar"
-    dependency "org.sonatype.plexus:plexus-sec-dispatcher:1.3@jar"
+    // Eclipse SiSu; This has replaced the Plexus IoC - https://codehaus-plexus.github.io/
+    dependency "org.eclipse.sisu:org.eclipse.sisu.inject:0.3.3@jar"
+    dependency "com.google.inject:guice:4.0@jar"
+    dependency "javax.inject:javax.inject:1@jar"
 
     //core:
     dependency "org.apache.maven:maven-core:${versions.maven}@jar"
@@ -139,17 +141,17 @@ libraries.maven3 = dependencies.module("org.apache.maven:maven-core:${versions.m
     dependency "org.apache.maven:maven-plugin-api:${versions.maven}@jar"
     dependency "org.apache.maven:maven-aether-provider:${versions.maven}@jar"
 
-    dependency 'org.apache.maven.wagon:wagon-file:2.4@jar'
-    dependency 'org.apache.maven.wagon:wagon-http:2.4@jar'
-    dependency 'org.apache.maven.wagon:wagon-provider-api:2.4@jar'
-    dependency 'org.apache.maven.wagon:wagon-http-shared4:2.4@jar'
+    dependency 'org.apache.maven.wagon:wagon-file:2.12@jar'
+    dependency 'org.apache.maven.wagon:wagon-http:2.12@jar'
+    dependency 'org.apache.maven.wagon:wagon-provider-api:2.12@jar'
+    dependency 'org.apache.maven.wagon:wagon-http-shared:2.12@jar'
 
     //eather:
-    dependency "org.sonatype.aether:aether-api:1.13.1@jar"
-    dependency "org.sonatype.aether:aether-impl:1.13.1@jar"
-    dependency "org.sonatype.aether:aether-spi:1.13.1@jar"
-    dependency "org.sonatype.aether:aether-util:1.13.1@jar"
-    dependency 'org.sonatype.aether:aether-connector-wagon:1.13.1@jar'
+    dependency "org.eclipse.aether:aether-api:1.1.0@jar"
+    dependency "org.eclipse.aether:aether-impl:1.1.0@jar"
+    dependency "org.eclipse.aether:aether-spi:1.1.0@jar"
+    dependency "org.eclipse.aether:aether-util:1.1.0@jar"
+    dependency 'org.eclipse.aether:aether-transport-wagon:1.1.0@jar'
 }
 
 libraries.spock = [
